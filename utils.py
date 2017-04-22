@@ -5,8 +5,8 @@ from xml.dom import minidom
 import cv2
 import numpy
 
-
-COMPARISON_MATRIX_SIZE = 5
+# for best letter recognition use 5 for first game and 24 for second game
+COMPARISON_MATRIX_SIZE = 24
 
 
 class CropType(object):

@@ -17,8 +17,8 @@ import keyboard
 
 
 WORD_LIST_FILENAME = 'words.txt'
-SPRITESHEET_DATA_XML = 'data/data1.xml'
-SPRITESHEET_DATA_IMAGE = 'data/sheet1.png'
+SPRITESHEET_DATA_XML = 'data/data2.xml'
+SPRITESHEET_DATA_IMAGE = 'data/sheet2.png'
 SCREENSHOT_HOTKEY_BUTTON = 'home'
 
 
