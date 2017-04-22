@@ -75,4 +75,6 @@ class BruteForceWordFinder(object):
             if self.get_word_score_value(word) > min_word_score:
                 min_word_score, scoring_words = self.add_new_scoring_word(scoring_words, word, max_scoring)
 
+        longest_words.sort(key=lambda x: len(x))
+        scoring_words.sort(key=lambda x: self.get_word_score_value(x))
         return longest_words, scoring_words
