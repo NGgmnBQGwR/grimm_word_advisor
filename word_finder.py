@@ -25,13 +25,10 @@ class BruteForceWordFinder(object):
         else:
             raise ValueError("Unable to initialize words with given object '{}' ({})".format(words, type(words)))
 
-    @classmethod
-    def get_word_score_value(word):
+    def get_word_score_value(self, word):
         return sum([self.LETTER_VALUE[l] for l in word])
 
-
-    @classmethod
-    def add_new_longest_word(longest_words, word, max_longest):
+    def add_new_longest_word(self, longest_words, word, max_longest):
         word_len = len(word)
         if len(longest_words) >= max_longest:
             for pos in xrange(len(longest_words)):
@@ -45,17 +42,16 @@ class BruteForceWordFinder(object):
         return min_word_length, longest_words
 
 
-    @classmethod
-    def add_new_scoring_word(scoring_words, word, max_scoring):
-        word_score = get_word_score_value(word)
+    def add_new_scoring_word(self, scoring_words, word, max_scoring):
+        word_score = self.get_word_score_value(word)
         if len(scoring_words) >= max_scoring:
             for pos in xrange(len(scoring_words)):
-                if get_word_score_value(scoring_words[pos]) < word_score:
+                if self.get_word_score_value(scoring_words[pos]) < word_score:
                     scoring_words.pop(pos)
                     break
 
         scoring_words.append(word)
-        min_word_score = min([get_word_score_value(x) for x in scoring_words])
+        min_word_score = min([self.get_word_score_value(x) for x in scoring_words])
 
         return min_word_score, scoring_words
 
@@ -76,7 +72,7 @@ class BruteForceWordFinder(object):
             if len(word) > min_word_length:
                 min_word_length, longest_words = self.add_new_longest_word(longest_words, word, max_longest)
 
-            if get_word_score_value(word) > min_word_score:
+            if self.get_word_score_value(word) > min_word_score:
                 min_word_score, scoring_words = self.add_new_scoring_word(scoring_words, word, max_scoring)
 
         return longest_words, scoring_words
